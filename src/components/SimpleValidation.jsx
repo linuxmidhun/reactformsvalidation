@@ -40,9 +40,20 @@ const SimpleValidation = () => {
         checkValidation();
     });
 
+    const validateForm = errors => {
+        let valid = true;
+        Object.values(errors).forEach(val => val.length > 0 && (valid = false));
+        return valid;
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         setSubmitted(true);
+        if (validateForm(validation)) {
+            alert('success');
+        } else {
+            alert('failure');
+        }
     };
     return (
         <div>
